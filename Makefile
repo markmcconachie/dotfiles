@@ -1,5 +1,13 @@
 install:
 	make vim-install
+	make git-install
+
+git-install:
+	ln -s ${PWD}/git/gitignore ~/.gitignore
+	git config --global core.excludesfile ~/.gitignore
+
+git-clean:
+	rm -f ~/.gitignore
 
 vim-install:
 	make vim-clean
