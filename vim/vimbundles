@@ -1,0 +1,61 @@
+" vim: ft=vim foldmarker={,} foldlevel=0 foldmethod=marker spell:
+"
+"    |\  /|        |  |\  /|    /~~               |    '
+"    | \/ |/~~||/~\|_/| \/ |/~~|   /~\|/~\ /~~|/~~|/~\ |/~/
+"    |    |\__||   | \|    |\__ \__\_/|   |\__|\__|   ||\/_
+"
+"    VIM BUNDLES
+"        This is my the setup for my vim bundles :).
+
+" Setup {
+  filetype off
+  set rtp+=~/.vim/bundle/vundle/
+  call vundle#rc()
+  set background=dark
+
+  " let Vundle manage Vundle
+  Bundle 'gmarik/vundle'
+" }
+
+" General {
+  Bundle 'scrooloose/nerdtree'
+  Bundle 'Lokaltog/vim-powerline'
+  Bundle 'tpope/vim-sleuth'
+  Bundle 'sjl/vitality.vim'
+  Bundle 'tpope/vim-surround'
+  Bundle 'spf13/vim-autoclose'
+  Bundle 'tpope/vim-sensible'
+  Bundle 'nathanaelkane/vim-indent-guides'
+  Bundle 'kien/ctrlp.vim'
+  " Colors {
+    Bundle 'vim-scripts/peaksea'
+    Bundle 'altercation/vim-colors-solarized'
+    Bundle 'spf13/vim-colors'
+  " }
+" }
+
+" Development {
+  Bundle 'tpope/vim-fugitive'
+  Bundle 'tpope/vim-commentary'
+  Bundle 'kien/rainbow_parentheses.vim'
+
+  " JavaScript {
+    Bundle 'leshill/vim-json'
+    Bundle 'pangloss/vim-javascript'
+  " }
+  " HTML {
+    Bundle "amirh/HTML-AutoCloseTag"
+    Bundle 'hail2u/vim-css3-syntax'
+  " }
+  " Ruby {
+    Bundle 'tpope/vim-rails'
+    Bundle 'tpope/vim-cucumber'
+    Bundle 'vim-ruby/vim-ruby'
+  " }
+  " Clojure {
+    Bundle 'guns/vim-clojure-static'
+  " }
+  " Markdown {
+    Bundle 'tpope/vim-markdown'
+  " }
+" }

@@ -1,0 +1,152 @@
+" vim: ft=vim foldmarker={,} foldlevel=2 foldmethod=marker spell:
+"
+"    |\  /|        |  |\  /|    /~~               |    '
+"    | \/ |/~~||/~\|_/| \/ |/~~|   /~\|/~\ /~~|/~~|/~\ |/~/
+"    |    |\__||   | \|    |\__ \__\_/|   |\__|\__|   ||\/_
+"
+"    VIM CONFIG
+"        This is my vim config.
+"           * Uses Vundle for bundle managment
+"           * Sources ~/.vimbundle for listing bundles
+"           * Inspired by [spf13](https://github.com/spf13/spf13-vim)
+"
+" Environment {
+  set nocompatible
+  let mapleader=","
+  " Load bundles 
+  if filereadable(expand('~/.vimbundles'))
+    source ~/.vimbundles
+  endif
+" }
+
+" General {
+  " Color {
+    set background=dark                     "Assume dark terminal
+    let g:solarized_termcolors=256
+    let g:solarized_termtrans=1
+    let g:solarized_contrast="high"
+    let g:solarized_visibility="high"
+    if filereadable(expand("~/.vim/bundle/vim-colors-solarized/colors/solarized.vim"))
+      color solarized
+    endif
+  "}
+
+  " Stop leaving messy files
+  set nobackup
+  set noswapfile
+
+  filetype plugin indent on               "Detect file types
+  syntax on                               "Highlight Syntax
+  " Better Unix / Windows compatibility
+  set viewoptions=folds,options,cursor,unix,slash
+  set virtualedit=onemore                 "Allow for cursor beyond last character
+  set history=1000                        "Store a ton of history (default is 20)
+  set spell                               "Spell checking on
+  set hidden                              "Allow buffer switching without saving
+  set mouse=a                             "Use mouse for scrolling etc
+
+  " Directories {
+    set backup                      " Backups are nice ...
+    set undofile                    " So is persistent undo ...
+    set undolevels=1000             " Maximum number of changes that can be undone
+    set undoreload=10000            " Maximum number lines to save for undo on a buffer reload
+  " }
+" }
+
+" Interface {
+  set title
+  set shortmess+=I
+  set shortmess+=filmnrxoOtT
+  " Ruler {
+    set ruler                       " Show the ruler
+    " A ruler on steroids
+    set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%)
+    set showcmd                     " Show partial commands in status line and
+                                    " Selected characters/lines in visual mode
+  " }
+
+  " status line {
+    set laststatus=2
+    set statusline=%<%f\                     " Filename
+    set statusline+=%w%h%m%r                 " Options
+    if exists("*fugitive#statusline")
+      set statusline+=%{fugitive#statusline()} " Git Hotness
+    endif
+    set statusline+=\ [%{&ff}/%Y]            " Filetype
+    set statusline+=\ [%{getcwd()}]          " Current dir
+    set statusline+=%=%-14.(%l,%c%V%)\ %p%%  " Right aligned file nav info
+  " }
+
+  set backspace=indent,eol,start  " Backspace for dummies
+  set linespace=0                 " No extra spaces between rows
+  set nu                          " Line numbers on
+  set showmatch                   " Show matching brackets/parenthesis
+  set incsearch                   " Find as you type search
+
+  set hlsearch                    " Highlight search terms
+  set winminheight=0              " Windows can be 0 line high
+  set ignorecase                  " Case insensitive search
+  set smartcase                   " Case sensitive when uc present
+  set wildmenu                    " Show list instead of just  completing
+  set wildmode=list:longest,full  " Command <Tab> completion,
+  set whichwrap=b,s,h,l,<,>,[,]   " Backspace and cursor keys wrap too
+  set scrolljump=5                " Lines to scroll when cursor leaves screen
+  set scrolloff=3                 " Minimum lines to keep above and below cursor
+  set foldenable                  " Auto fold code
+  set list
+  set listchars=tab:>.,trail:.,extends:#,nbsp:.
+" }
+
+" Formatting {
+  set nowrap                      " Wrap long lines
+  set autoindent                  " Indent at the same level of the previous line
+  set shiftwidth=2                " Use indents of 4 spaces
+  set expandtab                   " Tabs are spaces, not tabs
+  set tabstop=2                   " An indentation every four columns
+  set softtabstop=2               " Let backspace delete indent
+  set pastetoggle=<F2>            " pastetoggle (sane indentation on pastes)
+" }
+
+" Key bindings {
+  " Quickly edit/reload the vimrc file
+  nmap <silent> <leader>ev :e $MYVIMRC<CR>
+  nmap <silent> <leader>sv :so $MYVIMRC<CR>
+
+  nmap <silent> <leader>w :w<CR>
+
+  nmap <silent> <leader>ws :%s/\s\+$//<CR>
+
+  map <silent> <leader>n :nohl<cr>
+
+  " save pressing shift to enter commands
+  nnoremap ; :
+  " map \ to run a shell command
+  map \ :!
+
+  " For bundles {
+    " NerdTree {
+        map <C-n> :NERDTreeToggle<CR>:NERDTreeMirror<CR>
+        let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr']
+        let NERDTreeChDirMode=0
+        let NERDTreeQuitOnOpen=1
+        let NERDTreeMouseMode=2
+        let NERDTreeShowHidden=1
+        let NERDTreeKeepTreeInNewTab=1
+        let g:nerdtree_tabs_open_on_gui_startup=0
+    " }
+    " Autoclose {
+      " Make it so AutoCloseTag works for xml and xhtml files as well
+      au FileType xhtml,xml ru ftplugin/html/autoclosetag.vim
+      nmap <Leader>ac <Plug>ToggleAutoCloseMappings
+    " }
+    "
+    " Rainbow parenthesis {
+      if exists("*RainbowParenthesesToggle")
+        au VimEnter * RainbowParenthesesToggle
+        au Syntax * RainbowParenthesesLoadRound
+        au Syntax * RainbowParenthesesLoadSquare
+        au Syntax * RainbowParenthesesLoadBraces
+      endif
+    " }
+  " }
+" }
