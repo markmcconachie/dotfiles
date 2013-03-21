@@ -22,7 +22,7 @@ cd ~/src/dotfiles
 make install
 ````
 
-### Installing individule configs
+### Installing individul configs
 
 ````
 make install-git
