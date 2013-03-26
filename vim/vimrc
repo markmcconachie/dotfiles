@@ -1,4 +1,4 @@
-" vim: ft=vim foldmarker={,} foldlevel=0 foldmethod=marker spell:
+" vim: ft=vim foldmarker={,} foldlevel=10 foldmethod=marker spell:
 "
 "    |\  /|        |  |\  /|    /~~               |    '
 "    | \/ |/~~||/~\|_/| \/ |/~~|   /~\|/~\ /~~|/~~|/~\ |/~/
@@ -16,6 +16,10 @@
   " Load bundles
   if filereadable(expand('~/.vimbundles'))
     source ~/.vimbundles
+  endif
+
+  if $TMUX != ''
+    set clipboard+=unnamed
   endif
 " }
 

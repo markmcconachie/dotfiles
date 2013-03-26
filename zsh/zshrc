@@ -1,0 +1,46 @@
+# vim: ft=zsh foldmarker={,} foldlevel=10 foldmethod=marker spell:
+#
+#    |\  /|        |  |\  /|    /~~               |    '
+#    | \/ |/~~||/~\|_/| \/ |/~~|   /~\|/~\ /~~|/~~|/~\ |/~/
+#    |    |\__||   | \|    |\__ \__\_/|   |\__|\__|   ||\/_
+#
+#    ZSH CONFIG
+#         This is my zsh config.
+#           * :)
+
+# Environment {
+  fpath=("~/.zsh/functions" $fpath)
+  export EDITOR=vim       # Use vim as the editor
+  export CLICOLOR=true    # Make scripts (like ls) be colorful
+  PATH="/usr/local/share/npm/bin:$PATH"
+# }
+
+# Functions {
+  commandExists() {
+    which $1 &> /dev/null
+  }
+# }
+
+# Prompt {
+  setupPrompt() {
+    PROMPT="☯ "
+  }
+  setupPrompt
+# }
+
+# Aliases {
+  if commandExists mvim; then
+    alias vim="mvim -v" #use macvim instead of vim
+  fi
+
+  # vim muscle muscle memory commands {
+    alias :q="exit"
+    alias :e="vim"
+  # }
+# }
+
+# Initialize helper utilities {
+  if commandExists rbenv; then
+    eval "$(rbenv init -)"
+  fi
+# }
