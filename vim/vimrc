@@ -20,6 +20,10 @@
   if filereadable(expand('~/.vimbundles'))
     source ~/.vimbundles
   endif
+
+  if $TMUX != ''
+    set clipboard+=unnamed
+  endif
 " }
 
 " General {
