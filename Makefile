@@ -4,6 +4,7 @@ install:
 	make zsh-install
 
 git-install:
+	make git-clean
 	ln -s ${PWD}/git/gitignore ~/.gitignore
 	git config --global core.excludesfile ~/.gitignore
 
@@ -14,22 +15,11 @@ zsh-install:
 	make zsh-clean
 	ln -s ${PWD}/zsh/zshrc ~/.zshrc
 	ln -s ${PWD}/zsh/zshenv ~/.zshenv
-	mkdir ~/.zsh
-	ln -s ${PWD}/zsh/functions ~/.zsh
+	ln -s ${PWD}/zsh/lib ~/.zsh
 	chsh -s /bin/zsh
 
 zsh-clean:
 	rm -rf ~/.zsh*
-
-tmux-install:
-	make tmux-clean
-	ln -s ${PWD}/tmux/tmux.conf ~/.tmux.conf
-	mkdir ~/.tmux
-	git clone git://github.com/erikw/tmux-powerline.git ~/.tmux/tmux-powerline
-
-tmux-clean:
-	rm -f ~/.tmux.conf
-	rm -rf ~/.tmux
 
 vim-install:
 	make vim-clean

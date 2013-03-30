@@ -48,9 +48,10 @@
     Bundle 'kchmck/vim-coffee-script'
   " }
 
-  " HTML {
+  " HTML (& templating) {
     Bundle "amirh/HTML-AutoCloseTag"
     Bundle 'hail2u/vim-css3-syntax'
+    Bundle 'digitaltoad/vim-jade'
   " }
   " Ruby {
     Bundle 'tpope/vim-rails'

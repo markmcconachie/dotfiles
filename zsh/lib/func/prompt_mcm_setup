@@ -1,0 +1,19 @@
+autoload -Uz vcs_info
+autoload -U colors && colors
+
+zstyle ':vcs_info:*' check-for-changes true
+zstyle ':vcs_info:*' unstagedstr '%F{red}*%f'   # display this when there are unstaged changes
+zstyle ':vcs_info:*' stagedstr '%F{yellow}+%f'  # display this when there are staged changes
+
+zstyle ':vcs_info:git*' formats " %b%m%u%c"
+
+zstyle ':vcs_info:*' enable git cvs svn
+
+theme_precmd() {
+  vcs_info
+}
+
+PROMPT='%F{237}[%f%F{38}%~/%f${vcs_info_msg_0_}%F{237}]%f %F{250}%%%f '
+
+autoload -U add-zsh-hook
+add-zsh-hook precmd theme_precmd

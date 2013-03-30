@@ -1,0 +1,4 @@
+  commandExists() {
+    which $1 &> /dev/null
+  }
+

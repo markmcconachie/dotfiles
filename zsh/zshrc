@@ -8,36 +8,21 @@
 #         This is my zsh config.
 #           * :)
 
-# Environment {
-  fpath=("~/.zsh/functions" $fpath)
-  export EDITOR=vim       # Use vim as the editor
-  export CLICOLOR=true    # Make scripts (like ls) be colorful
-  PATH="/usr/local/share/npm/bin:$PATH"
-# }
+# Source config files
+for config_file ($HOME/.zsh/lib/*.zsh) source $config_file
 
-# Functions {
-  commandExists() {
-    which $1 &> /dev/null
-  }
-# }
+export EDITOR=vim       # Use vim as the editor
+export CLICOLOR=true    # Make scripts (like ls) be colorful
+export PAGER="less"
+export LESS="-R"
 
-# Prompt {
-  setupPrompt() {
-    PROMPT="☯ "
-  }
-  setupPrompt
-# }
+PATH="/usr/local/share/npm/bin:$PATH"
 
-# Aliases {
-  if commandExists mvim; then
-    alias vim="mvim -v" #use macvim instead of vim
-  fi
+fpath=($fpath $HOME/.zsh/func)
+typeset -U fpath
 
-  # vim muscle muscle memory commands {
-    alias :q="exit"
-    alias :e="vim"
-  # }
-# }
+setopt auto_cd
+setopt auto_menu
 
 # Initialize helper utilities {
   if commandExists rbenv; then
