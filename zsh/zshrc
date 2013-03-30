@@ -16,7 +16,7 @@ export CLICOLOR=true    # Make scripts (like ls) be colorful
 export PAGER="less"
 export LESS="-R"
 
-PATH="/usr/local/share/npm/bin:$PATH"
+PATH="/usr/local/bin:/usr/local/share/npm/bin:$PATH"
 
 fpath=($fpath $HOME/.zsh/func)
 typeset -U fpath
