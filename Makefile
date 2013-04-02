@@ -30,9 +30,9 @@ tmux-clean:
 
 vim-install:
 	make vim-clean
-	git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
 	ln -s ${PWD}/vim/vimrc ~/.vimrc
 	ln -s ${PWD}/vim/vimbundles ~/.vimbundles
+	git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
 	vim +BundleInstall +qall
 
 vim-clean:

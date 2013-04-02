@@ -25,5 +25,5 @@ make install
 ### Installing individul configs
 
 ````
-make install-git
+make vim-install
 ````
