@@ -1,4 +1,4 @@
-" vim: ft=vim foldmarker={,} foldlevel=10 foldmethod=marker spell:
+" vim: ft=vim  spell:
 "
 "    |\  /|        |  |\  /|    /~~               |    '
 "    | \/ |/~~||/~\|_/| \/ |/~~|   /~\|/~\ /~~|/~~|/~\ |/~/
@@ -112,23 +112,48 @@
 
 " Key bindings {
   " Quickly edit/reload the vimrc file
-  nmap <silent> <leader>ev :e $MYVIMRC<CR>
-  nmap <silent> <leader>sv :so $MYVIMRC<CR>
+  nnoremap <silent> <leader>ev :e $MYVIMRC<CR>
+  nnoremap <silent> <leader>sv :so $MYVIMRC<CR>
 
-  nmap <silent> <leader>w :w<CR>
+  nnoremap <silent> <leader>w :w<CR>
 
-  nmap <silent> <leader>ws :%s/\s\+$//<CR>
+  nnoremap <silent> <leader>ws :%s/\s\+$//<CR>
 
-  map <silent> <leader>n :nohl<cr>
+  noremap <silent> <leader>n :nohl<cr>
+
+  " move line up and down with _ and +
+  nnoremap _ ddp
+  nnoremap + ddkP
+
+  " insert mode {
+    " <c-u> makes current word uppercase
+    inoremap <c-u> <esc>mtbveU`ta
+  " }
 
   " save pressing shift to enter commands
   nnoremap ; :
   " map \ to run a shell command
-  map \ :!
+  nnoremap \ :!
+
+  " surround the current word in double quotes
+  nnoremap ," viw<esc>a"<esc>hbi"<esc>lel
+
+  " surround the current word in double quotes
+  nnoremap ,' viw<esc>a'<esc>hbi'<esc>lel
+
+  nnoremap <Up> <nop>
+  nnoremap <Down> <nop>
+  nnoremap <Left> <nop>
+  nnoremap <Right> <nop>
+
+  inoremap <Up> <nop>
+  inoremap <Down> <nop>
+  inoremap <Left> <nop>
+  inoremap <Right> <nop>
 
   " For bundles {
     " NerdTree {
-        map <C-n> :NERDTreeToggle<CR>:NERDTreeMirror<CR>
+        noremap <C-n> :NERDTreeToggle<CR>:NERDTreeMirror<CR>
         let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr']
         let NERDTreeChDirMode=0
         let NERDTreeQuitOnOpen=1
@@ -140,7 +165,7 @@
     " Autoclose {
       " Make it so AutoCloseTag works for xml and xhtml files as well
       au FileType xhtml,xml ru ftplugin/html/autoclosetag.vim
-      nmap <Leader>ac <Plug>ToggleAutoCloseMappings
+      nnoremap <Leader>ac <Plug>ToggleAutoCloseMappings
     " }
     "
     " Rainbow parenthesis {
@@ -152,4 +177,8 @@
       endif
     " }
   " }
+" }
+
+" Abberviations {
+  iabbrev @@ mark@markmcconachie.com
 " }
