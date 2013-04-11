@@ -25,7 +25,8 @@ setopt auto_cd
 setopt auto_menu
 
 # Initialize helper utilities {
-  if commandExists rbenv; then
+  [[ -d ~/.nvm ]] && . ~/.nvm/nvm.sh
+   if commandExists rbenv; then
     eval "$(rbenv init -)"
   fi
   if commandExists tmuxinator; then

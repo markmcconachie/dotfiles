@@ -15,7 +15,7 @@
   let mapleader=","
 
   set shell=bash
-
+  set nofoldenable
   " Load bundles
   if filereadable(expand('~/.vimbundles'))
     source ~/.vimbundles
@@ -27,6 +27,7 @@
 " }
 
 " General {
+  hi clear
   " Color {
     set background=dark                     "Assume dark terminal
     let g:solarized_termcolors=256
@@ -36,6 +37,8 @@
     if filereadable(expand("~/.vim/bundle/vim-colors-solarized/colors/solarized.vim"))
       color solarized
     endif
+
+    set colorcolumn=80
   "}
 
   " backup to ~/.tmp
@@ -117,7 +120,7 @@
 
   nnoremap <silent> <leader>w :w<CR>
 
-  nnoremap <silent> <leader>ws :%s/\s\+$//<CR>
+  nnoremap <silent> <leader>ws :%s/\s\+$//e<CR>
 
   noremap <silent> <leader>n :nohl<cr>
 
@@ -127,6 +130,7 @@
 
   " insert mode {
     " <c-u> makes current word uppercase
+    " inoremap <c-u> <esc>mtbveU`ta
     inoremap <c-u> <esc>mtbveU`ta
   " }
 
@@ -181,4 +185,11 @@
 
 " Abberviations {
   iabbrev @@ mark@markmcconachie.com
+" }
+
+" Autocmds {
+  augroup tidy_on_save
+    autocmd!
+    autocmd BufWrite * :%s/\s\+$//e
+  augroup END
 " }
