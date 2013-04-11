@@ -156,6 +156,8 @@
   inoremap <Right> <nop>
 
   " For bundles {
+    nnoremap <silent> <Leader>b :TagbarToggle<CR>
+    nnoremap <leader>. :CtrlPTag<cr>
     " NerdTree {
         noremap <C-n> :NERDTreeToggle<CR>:NERDTreeMirror<CR>
         let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr']

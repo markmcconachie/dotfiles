@@ -27,6 +27,7 @@
   Bundle 'tpope/vim-sensible'
   Bundle 'nathanaelkane/vim-indent-guides'
   Bundle 'kien/ctrlp.vim'
+  Bundle 'majutsushi/tagbar'
   " Colors {
     Bundle 'vim-scripts/peaksea'
     Bundle 'altercation/vim-colors-solarized'
