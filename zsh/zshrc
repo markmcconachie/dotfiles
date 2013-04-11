@@ -28,6 +28,9 @@ setopt auto_menu
   if commandExists rbenv; then
     eval "$(rbenv init -)"
   fi
+  if commandExists nvm; then
+    . ~/.nvm/nvm.sh
+  fi
   if commandExists tmuxinator; then
     [[ -s $HOME/.tmuxinator/scripts/tmuxinator ]] && source $HOME/.tmuxinator/scripts/tmuxinator
   fi
