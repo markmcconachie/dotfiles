@@ -3,7 +3,6 @@
 .LSOverride
 Icon
 
-
 # Thumbnails
 ._*
 
@@ -13,3 +12,6 @@ Icon
 
 # vim files
 .*~
+
+# ctags stuff
+.tags
