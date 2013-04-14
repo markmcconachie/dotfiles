@@ -158,6 +158,8 @@
   " For bundles {
     nnoremap <silent> <Leader>b :TagbarToggle<CR>
     nnoremap <leader>. :CtrlPTag<cr>
+    nnoremap <leader>m :silent !{ctags}<cr><cr>
+    set tags=.tags;/
     " NerdTree {
         noremap <C-n> :NERDTreeToggle<CR>:NERDTreeMirror<CR>
         let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr']
@@ -194,4 +196,17 @@
     autocmd!
     autocmd BufWrite * :%s/\s\+$//e
   augroup END
+
+  augroup create_ctags
+    autocmd!
+    autocmd BufWritePost * :silent call UpdateCtags()
+  augroup END
+" }
+
+" Functions {
+  function! UpdateCtags()
+    if filereadable(".tags")
+      silent :!ctags
+    endif
+  endfunction
 " }

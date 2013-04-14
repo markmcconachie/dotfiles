@@ -1,0 +1,5 @@
+--recurse=yes
+-f ./.tags
+--tag-relative=yes
+--exclude=*.app
+--exclude=.git

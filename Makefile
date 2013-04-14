@@ -21,6 +21,13 @@ zsh-install:
 zsh-clean:
 	rm -rf ~/.zsh*
 
+ctags-install:
+	make ctags-clean
+	ln -s ${PWD}/ctags/ctags ~/.ctags
+
+ctags-clean:
+	rm -f ~/.ctags
+
 tmux-install:
 	make tmux-clean
 	ln -s ${PWD}/tmux/tmux.conf ~/.tmux.conf
