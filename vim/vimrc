@@ -196,4 +196,17 @@
     autocmd!
     autocmd BufWrite * :%s/\s\+$//e
   augroup END
+
+  augroup create_ctags
+    autocmd!
+    autocmd BufWritePost * :silent call UpdateCtags()
+  augroup END
+" }
+
+" Functions {
+  function! UpdateCtags()
+    if filereadable(".tags")
+      silent :!ctags
+    endif
+  endfunction
 " }
