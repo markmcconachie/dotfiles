@@ -28,6 +28,7 @@
   Bundle 'nathanaelkane/vim-indent-guides'
   Bundle 'kien/ctrlp.vim'
   Bundle 'majutsushi/tagbar'
+  Bundle 'vim-scripts/AutoTag'
   " Colors {
     Bundle 'vim-scripts/peaksea'
     Bundle 'altercation/vim-colors-solarized'
