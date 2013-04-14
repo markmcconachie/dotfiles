@@ -13,7 +13,8 @@ theme_precmd() {
   vcs_info
 }
 
-PROMPT='%F{237}[%f%F{38}%~/%f${vcs_info_msg_0_}%F{237}]%f %F{250}%%%f '
+MODE_INDICATOR='%F{123}⇄ %f '
+PROMPT='%F{237}[%f%F{38}%~/%f${vcs_info_msg_0_}%F{237}]%f %F{250}%%%f $(vi_mode_prompt_info)'
 
 autoload -U add-zsh-hook
 add-zsh-hook precmd theme_precmd
