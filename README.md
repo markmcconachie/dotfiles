@@ -55,9 +55,8 @@ default *tags*
 
 ## Vim ctags commands
 
-### CtrlP by tag
-
-*<leader>.* Open CmdP and browse by tag
-*<leader>b* Open the tagbar sidebar
-*<C-]>* Jump to the definition of the tag under the cursor
-
+| Command       | Description                                        |
+| ------------- |:--------------------------------------------------:|
+| \<leader\>.   | Open CmdP and browse by tag                        |
+| \<leader\>b   | Open the tagbar sidebar                            |
+| \<C-]\>       | Jump to the definition of the tag under the cursor |
