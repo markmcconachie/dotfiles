@@ -15,8 +15,12 @@ export EDITOR=vim       # Use vim as the editor
 export CLICOLOR=true    # Make scripts (like ls) be colorful
 export PAGER="less"
 export LESS="-R"
+HISTSIZE=10000
+SAVEHIST=10000
+HISTFILE=~/.zsh_history
 
-PATH="/usr/local/bin:/usr/local/share/npm/bin:/usr/local/share/python:$PATH"
+PATH="/usr/local/share/npm/bin:/usr/local/share/python:$PATH"
+PATH="$HOME/bin:$PATH"
 
 fpath=($fpath $HOME/.zsh/func)
 typeset -U fpath
@@ -29,7 +33,14 @@ setopt auto_menu
    if commandExists rbenv; then
     eval "$(rbenv init -)"
   fi
+  if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
   if commandExists tmuxinator; then
     [[ -s $HOME/.tmuxinator/scripts/tmuxinator ]] && source $HOME/.tmuxinator/scripts/tmuxinator
   fi
 # }
+
+if [ -f ~/.zsh_private ]; then
+  source ~/.zsh_private
+fi
+
+bindkey ^R history-incremental-pattern-search-backward
