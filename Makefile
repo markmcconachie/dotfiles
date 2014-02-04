@@ -43,6 +43,7 @@ vim-install:
 	vim +BundleInstall +qall
 
 vim-clean:
-	rm -rf ~/.vim*
+	rm -f ~/.vimrc
+	rm -f ~/.vimbundles
 	rm -rf ~/.vim/bundle/vundle
 
